@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Caption UI</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        img { max-width: 400px; margin-top: 20px; }
+        .caption { font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Image Caption Generator</h1>
+    <form action="/caption" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Generate Caption</button>
+    </form>
+
+    {% if image_data %}
+        <div>
+            <h2>Preview:</h2>
+            <img src="{{ image_data }}" alt="Uploaded Image">
+        </div>
+    {% endif %}
+
+    {% if caption %}
+        <div class="caption">
+            <h2>Caption:</h2>
+            <p>{{ caption }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
